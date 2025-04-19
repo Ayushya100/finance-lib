@@ -6,18 +6,18 @@ import {
   buildApiError,
   buildApiResponse,
   logger
-} from "./src/utils/index.js";
-import errorHandler from "./src/middlewares/index.js";
-import { App } from './src/templates/index.js';
+} from './src/utils/index.js';
+import { errorHandler } from './src/middlewares/index.js';
+import { Service } from './src/templates/index.js';
 
 dotenv.config({
   path: './env'
 });
 
-export default {
+export {
   buildApiError,
   buildApiResponse,
   logger,
   errorHandler,
-  App
+  Service
 };
