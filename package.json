@@ -26,11 +26,10 @@
   },
   "homepage": "https://github.com/Ayushya100/finance-lib#readme",
   "devDependencies": {
-    "appmap-node": "^2.24.3",
-    "nodemon": "^3.1.9",
     "prettier": "^3.5.3"
   },
   "dependencies": {
+    "axios": "^1.8.4",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",

@@ -1,6 +1,6 @@
 'use strict';
 
-import { responseCodes, responseMessage } from '../assets/response-codes';
+import { responseCodes, responseMessage } from '../assets/response-codes.js';
 
 /*
  * ApiError class to handle all the errors.

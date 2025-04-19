@@ -1,6 +1,6 @@
 'use strict';
 
-import winston, { level } from 'winston';
+import winston from 'winston';
 
 const customLevel = {
   levels: {

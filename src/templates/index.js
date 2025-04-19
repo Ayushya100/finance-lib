@@ -1,5 +1,5 @@
 'use strict';
 
-import { App } from './app-template.js';
+import { Service } from './service-template.js';
 
-export { App };
+export { Service };
