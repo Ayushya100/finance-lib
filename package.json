@@ -1,0 +1,33 @@
+{
+  "name": "finance-lib",
+  "version": "1.0.0",
+  "description": "A shared internal library providing core utilities and reusable modules for Node.js microservices built with Express. This library will help in reducing the code duplication and ensures consistent implementation across all the services.\r ## Features\r - Centralized logging\r - Standard response codes & messages\r - Database utilities for connection handling\r - Predefined API Response and API Error structrues\r - Reusable middlewares: Access Token validation, Parameter validation, & Global error handler.\r - Reusable base classes for: App initialization, Router configuration, Service logic, & Controller logic.\r ## Documentation\r - **DB Model Documentation:** [Finance Tracker DB Model](https://app.eraser.io/workspace/4Hwce2ZbbDoeHojTohVe?origin=share)\r ---\r **Finance Tracker** - Simplifying Financial Management for Everyone!",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayushya100/finance-lib.git"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "javascript",
+    "library"
+  ],
+  "author": "Ayushya Jaiswal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayushya100/finance-lib/issues"
+  },
+  "homepage": "https://github.com/Ayushya100/finance-lib#readme",
+  "devDependencies": {
+    "appmap-node": "^2.24.3",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.3"
+  }
+}
