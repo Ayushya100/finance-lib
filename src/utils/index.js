@@ -1,7 +1,7 @@
 'use strict';
 
-import { buildApiError } from './ApiError';
-import { buildApiResponse } from './ApiResponse';
-import logger from './logger';
+import { buildApiError } from './ApiError.js';
+import { buildApiResponse } from './ApiResponse.js';
+import logger from './logger.js';
 
 export { buildApiError, buildApiResponse, logger };

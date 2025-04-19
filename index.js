@@ -5,9 +5,11 @@ import {
   buildApiResponse,
   logger
 } from "./src/utils/index.js";
+import errorHandler from "./src/middlewares/index.js";
 
 export default {
   buildApiError,
   buildApiResponse,
-  logger
+  logger,
+  errorHandler
 };
