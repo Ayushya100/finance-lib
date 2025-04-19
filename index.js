@@ -1,8 +1,13 @@
 'use strict';
 
-import { buildApiError, buildApiResponse } from "./src/utils/index.js";
+import {
+  buildApiError,
+  buildApiResponse,
+  logger
+} from "./src/utils/index.js";
 
 export default {
   buildApiError,
-  buildApiResponse
+  buildApiResponse,
+  logger
 };
