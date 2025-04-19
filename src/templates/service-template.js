@@ -119,6 +119,8 @@ Service.prototype.buildConnection = function () {
     process.exit(1);
   }
 
+  this.registerServiceEndpoints();
+
   const serviceName = this.serviceConfig.serviceName;
   const HOST = this.serviceConfig.HOST;
   const PORT = this.serviceConfig.PORT;
@@ -151,7 +153,7 @@ Service.prototype.testConnection = async function () {
 
   while (retry < retries) {
     try {
-      const API = `${PROTOCOL}://${HOST}:${PORT}/api/v1.0/health`;
+      const API = `${PROTOCOL}://${HOST}:${PORT}/${serviceName}/api/v1.0/health`;
       response = await axios.get(API, {
         timeout: timeout,
       });

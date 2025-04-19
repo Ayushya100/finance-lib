@@ -8,7 +8,7 @@ import {
   logger
 } from './src/utils/index.js';
 import { errorHandler } from './src/middlewares/index.js';
-import { Service } from './src/templates/index.js';
+import { Service, Router } from './src/templates/index.js';
 
 dotenv.config({
   path: './env'
@@ -19,5 +19,6 @@ export {
   buildApiResponse,
   logger,
   errorHandler,
-  Service
+  Service,
+  Router
 };
