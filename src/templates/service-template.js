@@ -9,7 +9,7 @@ import axios from 'axios';
 import os from 'os';
 import path from 'path';
 import { logger } from '../utils/index.js';
-import { errorHandler } from '../middlewares/index.js';
+import { userContext, errorHandler } from '../middlewares/index.js';
 import { generalServiceConfig } from '../../constants.js';
 
 const log = logger('service-template');
@@ -101,6 +101,11 @@ Service.prototype.initializeOpenAPI = function () {
       })
     );
   }
+};
+
+Service.prototype.getUserContext = function () {
+  log.debug('Global user context middleware initialized');
+  this.app.use(userContext);
 };
 
 Service.prototype.registerServiceEndpoints = function () {
