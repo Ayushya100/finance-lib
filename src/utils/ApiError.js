@@ -24,7 +24,8 @@ class ApiError extends Error {
     stack = '',
     data = []
   ) {
-    super(message), (this.statusCode = statusCode);
+    super(message);
+    this.statusCode = statusCode;
     this.message = message;
     this.devMessage = devMessage;
     this.type = type;
@@ -37,7 +38,7 @@ class ApiError extends Error {
       Error.captureStackTrace(this, this.constructor);
     }
 
-    this.success = statusCode >= 400;
+    this.success = statusCode < 400;
   }
 }
 

@@ -36,7 +36,6 @@ class Service {
 
     this.initializeApp();
     this.initializeOpenAPI();
-    this.registerErrorHandler();
   }
 }
 
@@ -125,6 +124,7 @@ Service.prototype.buildConnection = function () {
   }
 
   this.registerServiceEndpoints();
+  this.registerErrorHandler();
 
   const serviceName = this.serviceConfig.serviceName;
   const HOST = this.serviceConfig.HOST;
