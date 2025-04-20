@@ -5,10 +5,13 @@ import dotenv from 'dotenv';
 import {
   buildApiError,
   buildApiResponse,
-  logger
+  logger,
+  convertIdToPrettyString,
+  convertPrettyStringToId
 } from './src/utils/index.js';
 import { errorHandler } from './src/middlewares/index.js';
 import { Service } from './src/templates/index.js';
+import exec from './src/db/dbExec.js';
 
 dotenv.config({
   path: './env'
@@ -19,5 +22,8 @@ export {
   buildApiResponse,
   logger,
   errorHandler,
-  Service
+  Service,
+  exec,
+  convertIdToPrettyString,
+  convertPrettyStringToId
 };
