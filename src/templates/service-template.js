@@ -9,7 +9,11 @@ import axios from 'axios';
 import os from 'os';
 import path from 'path';
 import { logger } from '../utils/index.js';
-import { userContext, errorHandler } from '../middlewares/index.js';
+import {
+  userContext,
+  errorHandler,
+  fetchGeoDetailsMiddleware,
+} from '../middlewares/index.js';
 import { generalServiceConfig } from '../../constants.js';
 
 const log = logger('service-template');
@@ -107,6 +111,11 @@ Service.prototype.getUserContext = function () {
   this.app.use(userContext);
 };
 
+Service.prototype.ipGeoResolver = function () {
+  log.debug('Global Geo details from IP middleware initialized');
+  this.app.use(fetchGeoDetailsMiddleware);
+};
+
 Service.prototype.registerServiceEndpoints = function () {
   log.debug('Register service end-points');
 };
@@ -123,6 +132,7 @@ Service.prototype.buildConnection = function () {
     process.exit(1);
   }
 
+  this.ipGeoResolver();
   this.registerServiceEndpoints();
   this.registerErrorHandler();
 
