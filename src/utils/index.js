@@ -7,6 +7,8 @@ import {
   convertIdToPrettyString,
   convertPrettyStringToId,
 } from './convertId.js';
+import { convertToNativeTimeZone } from './dateTimeConvertor.js';
+import RequestContext from './requestContext.js';
 
 export {
   buildApiError,
@@ -14,4 +16,6 @@ export {
   logger,
   convertIdToPrettyString,
   convertPrettyStringToId,
+  convertToNativeTimeZone,
+  RequestContext,
 };

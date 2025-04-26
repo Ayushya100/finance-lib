@@ -13,13 +13,19 @@ import {
   userContext,
   errorHandler,
   fetchGeoDetailsMiddleware,
+  requestContextMiddleware,
 } from '../middlewares/index.js';
 import { generalServiceConfig } from '../../constants.js';
 
 const log = logger('service-template');
 
 class Service {
-  constructor(serviceConfig, cookieEnable = false, openApiEnabled = true) {
+  constructor(
+    serviceConfig,
+    cookieEnable = false,
+    openApiEnabled = true,
+    setUserContext = true
+  ) {
     log.debug('Service constructor has been called');
     this.app = express();
 
@@ -33,6 +39,7 @@ class Service {
     this.cookieEnable = cookieEnable;
     this.openApiEnabled = openApiEnabled;
     this.serviceConfig = serviceConfig;
+    this.setUserContext = setUserContext;
 
     const mainModulePath = process.argv[1];
     const appRoot = path.dirname(mainModulePath);
@@ -111,6 +118,14 @@ Service.prototype.getUserContext = function () {
   this.app.use(userContext);
 };
 
+Service.prototype.setUserContextFn = function () {
+  // Initialize User Context
+  if (this.setUserContext) {
+    log.debug('App user context middleware initialization');
+    this.app.use(requestContextMiddleware);
+  }
+};
+
 Service.prototype.ipGeoResolver = function () {
   log.debug('Global Geo details from IP middleware initialized');
   this.app.use(fetchGeoDetailsMiddleware);
@@ -133,6 +148,7 @@ Service.prototype.buildConnection = function () {
   }
 
   this.ipGeoResolver();
+  this.setUserContextFn();
   this.registerServiceEndpoints();
   this.registerErrorHandler();
 
