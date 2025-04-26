@@ -9,7 +9,8 @@ import {
   convertIdToPrettyString,
   convertPrettyStringToId,
   convertToNativeTimeZone,
-  RequestContext
+  RequestContext,
+  sendMail
 } from './src/utils/index.js';
 import { errorHandler } from './src/middlewares/index.js';
 import { Service } from './src/templates/index.js';
@@ -29,5 +30,6 @@ export {
   convertIdToPrettyString,
   convertPrettyStringToId,
   convertToNativeTimeZone,
-  RequestContext
+  RequestContext,
+  sendMail
 };
