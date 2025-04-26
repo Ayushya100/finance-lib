@@ -9,6 +9,7 @@ import {
 } from './convertId.js';
 import { convertToNativeTimeZone } from './dateTimeConvertor.js';
 import RequestContext from './requestContext.js';
+import sendMail from './sendMail.js';
 
 export {
   buildApiError,
@@ -18,4 +19,5 @@ export {
   convertPrettyStringToId,
   convertToNativeTimeZone,
   RequestContext,
+  sendMail,
 };
