@@ -72,20 +72,41 @@ Mail.prototype.buildEmailBody = function () {
   const PORT = process.env.PORT;
   const PROTOCOL = process.env.PROTOCOL;
 
-  this.body = {
-    body: {
-      name: this.emailOptions.name,
-      intro: this.emailOptions.intro,
-      action: {
-        instructions: this.emailOptions.instructions,
-        button: {
-          color: this.emailOptions.btnColor || '#22BC66',
-          text: this.emailOptions.btnText,
-          link: `${PROTOCOL}://${HOST}:${PORT}/${this.emailOptions.link}`,
+  const body = {};
+  body['name'] = this.emailOptions.name;
+  body['intro'] = this.emailOptions.intro;
+
+  if (this.functionality === 'TABLE') {
+    body['table'] = {
+      data: this.emailOptions.tableData,
+      columns: {
+        customWidth: {
+          name: '35%',
+          description: '65%',
+        },
+        customAlignment: {
+          name: 'left',
+          description: 'left',
         },
       },
-      outro: this.emailOptions.outro,
-    },
+    };
+  }
+
+  if (this.emailOptions.link) {
+    body['action'] = {
+      instructions: this.emailOptions.instructions,
+      button: {
+        color: this.emailOptions.btnColor || '#22BC66',
+        text: this.emailOptions.btnText,
+        link: `${PROTOCOL}://${HOST}:${PORT}/${this.emailOptions.link}`,
+      },
+    };
+  }
+
+  body['outro'] = this.emailOptions.outro;
+
+  this.body = {
+    body: body,
   };
 
   log.info('Mail Body transformation completed');
