@@ -12,7 +12,7 @@ import {
   RequestContext,
   sendMail
 } from './src/utils/index.js';
-import { errorHandler } from './src/middlewares/index.js';
+import { errorHandler, verifyUserId } from './src/middlewares/index.js';
 import { Service } from './src/templates/index.js';
 import exec from './src/db/dbExec.js';
 
@@ -31,5 +31,6 @@ export {
   convertPrettyStringToId,
   convertToNativeTimeZone,
   RequestContext,
-  sendMail
+  sendMail,
+  verifyUserId
 };
