@@ -14,6 +14,7 @@ import {
   errorHandler,
   fetchGeoDetailsMiddleware,
   requestContextMiddleware,
+  verifyToken,
 } from '../middlewares/index.js';
 import { generalServiceConfig } from '../../constants.js';
 
@@ -131,6 +132,16 @@ Service.prototype.ipGeoResolver = function () {
   this.app.use(fetchGeoDetailsMiddleware);
 };
 
+Service.prototype.registerPublicEndpoints = function () {
+  log.debug('Register service public end-points');
+  console.log('Register service public end-points called');
+};
+
+Service.prototype.setTokenVerification = function () {
+  log.debug('Verification token middleware initialization');
+  this.app.use(verifyToken);
+};
+
 Service.prototype.registerServiceEndpoints = function () {
   log.debug('Register service end-points');
 };
@@ -149,6 +160,8 @@ Service.prototype.buildConnection = function () {
 
   this.ipGeoResolver();
   this.setUserContextFn();
+  this.registerPublicEndpoints();
+  this.setTokenVerification();
   this.registerServiceEndpoints();
   this.registerErrorHandler();
 
