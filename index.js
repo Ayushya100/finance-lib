@@ -12,7 +12,7 @@ import {
   RequestContext,
   sendMail
 } from './src/utils/index.js';
-import { errorHandler, verifyUserId } from './src/middlewares/index.js';
+import { errorHandler, verifyUserId, verifyScope } from './src/middlewares/index.js';
 import { Service } from './src/templates/index.js';
 import exec from './src/db/dbExec.js';
 
@@ -32,5 +32,6 @@ export {
   convertToNativeTimeZone,
   RequestContext,
   sendMail,
-  verifyUserId
+  verifyUserId,
+  verifyScope
 };

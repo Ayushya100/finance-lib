@@ -6,6 +6,7 @@ import fetchGeoDetailsMiddleware from './geoIP.middleware.js';
 import requestContextMiddleware from './setUserContext.middleware.js';
 import verifyToken from './verifyToken.middleware.js';
 import verifyUserId from './verifyUserId.middleware.js';
+import verifyScope from './verifyScope.middleware.js';
 
 export {
   errorHandler,
@@ -14,4 +15,5 @@ export {
   requestContextMiddleware,
   verifyToken,
   verifyUserId,
+  verifyScope,
 };
