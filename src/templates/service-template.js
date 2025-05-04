@@ -8,6 +8,8 @@ import * as OpenApiValidator from 'express-openapi-validator';
 import axios from 'axios';
 import os from 'os';
 import path from 'path';
+import YAML from 'yamljs';
+import swaggerUi from 'swagger-ui-express';
 import { logger } from '../utils/index.js';
 import {
   userContext,
@@ -104,6 +106,11 @@ Service.prototype.initializeOpenAPI = function () {
   log.debug('App openAPI validator middleware initialization');
   // Initialize OpenAPI
   if (this.openApiEnabled) {
+    const apiSpec = YAML.load(this.openapiSpec);
+    
+    // Serve Swagger UI
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
+
     this.app.use(
       OpenApiValidator.middleware({
         apiSpec: this.openapiSpec,
