@@ -12,8 +12,8 @@ const verifyScope = (scope) => async (req, res, next) => {
     if (!userScopes.includes(scope)) {
       log.error('User dont have the mandatory scope. Cannot proceed');
       next({
-        status: 401,
-        message: 'USer verification failed',
+        status: 403,
+        message: 'User authorization failed',
         data: [],
         errors: [],
         stack: 'verifyScope function call',
@@ -25,8 +25,8 @@ const verifyScope = (scope) => async (req, res, next) => {
   } catch (err) {
     log.error('Scope not available');
     next({
-      status: 401,
-      message: 'User verification failed',
+      status: 403,
+      message: 'User authorization failed',
       data: [],
       errors: err,
       stack: err.stack,
