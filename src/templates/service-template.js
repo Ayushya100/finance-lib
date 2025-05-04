@@ -107,7 +107,7 @@ Service.prototype.initializeOpenAPI = function () {
   // Initialize OpenAPI
   if (this.openApiEnabled) {
     const apiSpec = YAML.load(this.openapiSpec);
-    
+
     // Serve Swagger UI
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
 

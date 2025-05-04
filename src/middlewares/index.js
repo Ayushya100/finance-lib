@@ -7,6 +7,7 @@ import requestContextMiddleware from './setUserContext.middleware.js';
 import verifyToken from './verifyToken.middleware.js';
 import verifyUserId from './verifyUserId.middleware.js';
 import verifyScope from './verifyScope.middleware.js';
+import verifyRole from './verifyRole.middleware.js';
 
 export {
   errorHandler,
@@ -16,4 +17,5 @@ export {
   verifyToken,
   verifyUserId,
   verifyScope,
+  verifyRole,
 };
