@@ -14,7 +14,7 @@ import {
 } from './src/utils/index.js';
 import { errorHandler, verifyUserId, verifyScope, verifyRole } from './src/middlewares/index.js';
 import { Service } from './src/templates/index.js';
-import exec from './src/db/dbExec.js';
+import { exec, trxRunner } from './src/db/index.js';
 
 dotenv.config({
   path: './env'
@@ -34,5 +34,6 @@ export {
   sendMail,
   verifyUserId,
   verifyScope,
-  verifyRole
+  verifyRole,
+  trxRunner
 };
