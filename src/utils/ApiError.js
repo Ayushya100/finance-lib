@@ -49,13 +49,16 @@ class ApiError extends Error {
  */
 
 const buildApiError = (err) => {
+  const errors = err.errors || [];
+  const stack = errors && errors.stack ? errors.stack : '';
+
   const apiError = new ApiError(
     err.status || 500,
     err.message,
     responseMessage[err.status],
     responseCodes[err.status],
-    err.errors,
-    err.stack,
+    errors,
+    stack,
     err.data
   );
 
