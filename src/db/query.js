@@ -19,4 +19,35 @@ const getUserPrivelegeInfo = async (userId) => {
   return exec(query, params);
 };
 
-export { getUserRefreshToken, getUserPrivelegeInfo };
+const getServiceInfo = async (microservice, protocol) => {
+  const query = `SELECT ID, MICROSERVICE, ENVIRONMENT, PROTOCOL, PORT
+    FROM SVC_CONFIG
+    WHERE MICROSERVICE = ? AND PROTOCOL = ? AND IS_DELETED = false;`;
+  const params = [microservice, protocol];
+
+  return exec(query, params);
+};
+
+const updateServicePort = async (id, port) => {
+  const query = `UPDATE SVC_CONFIG SET PORT = ?, MODIFIED_BY = 'SERVICE_START'
+    WHERE ID = ?`;
+  const params = [port, id];
+
+  return exec(query, params);
+};
+
+const registerNewService = async (microservice, port, protocol) => {
+  const query = `INSERT INTO SVC_CONFIG (MICROSERVICE, PROTOCOL, PORT, ENVIRONMENT)
+    VALUES (?, ?, ?, ?);`;
+  const params = [microservice, protocol, port, 'local'];
+
+  return exec(query, params);
+};
+
+export {
+  getUserRefreshToken,
+  getUserPrivelegeInfo,
+  getServiceInfo,
+  updateServicePort,
+  registerNewService,
+};

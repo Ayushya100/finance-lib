@@ -10,7 +10,7 @@ import os from 'os';
 import path from 'path';
 import YAML from 'yamljs';
 import swaggerUi from 'swagger-ui-express';
-import { logger } from '../utils/index.js';
+import { logger, registerService } from '../utils/index.js';
 import {
   userContext,
   errorHandler,
@@ -54,7 +54,7 @@ class Service {
 }
 
 Service.prototype.initializeApp = function () {
-  log.debug('App middlewares initilialization');
+  log.debug('App middlewares initialization');
   this.app.use(
     express.json({
       limit: this.payloadSizeLimit || '1mb', // Maximum request body size
@@ -141,7 +141,7 @@ Service.prototype.ipGeoResolver = function () {
 
 Service.prototype.registerPublicEndpoints = function () {
   log.debug('Register service public end-points');
-  console.log('Register service public end-points called');
+  log.debug('Register service public end-points called');
 };
 
 Service.prototype.setTokenVerification = function () {
@@ -175,12 +175,14 @@ Service.prototype.buildConnection = function () {
   const serviceName = this.serviceConfig.serviceName;
   const HOST = this.serviceConfig.HOST;
   const PORT = this.serviceConfig.PORT;
+  const PROTOCOL = this.serviceConfig.PROTOCOL;
 
-  this.app.listen(PORT, HOST, () => {
+  this.app.listen(PORT, HOST, async () => {
     log.info(`[${serviceName}] Server is running on port : ${PORT}`);
     log.info(
       `Uptime : ${process.uptime()} seconds | Timestamp : ${Date.now()} | Hostname : ${os.hostname()}`
     );
+    await registerService(serviceName, PORT, PROTOCOL);
   });
 };
 
