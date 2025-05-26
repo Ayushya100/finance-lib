@@ -10,6 +10,7 @@ import {
 import { convertToNativeTimeZone } from './dateTimeConvertor.js';
 import RequestContext from './requestContext.js';
 import sendMail from './sendMail.js';
+import { registerService } from './registerService.js';
 
 export {
   buildApiError,
@@ -20,4 +21,5 @@ export {
   convertToNativeTimeZone,
   RequestContext,
   sendMail,
+  registerService,
 };

@@ -7,7 +7,7 @@ const errorHandler = (err, req, res, next) => {
 
   let errors = [];
   if (Array.isArray(apiError.errors)) {
-    errors = apiError.errors.map(e => e?.message || e);
+    errors = apiError.errors.map((e) => e?.message || e);
   } else if (apiError.errors instanceof Error) {
     errors = [apiError.errors.message];
   } else if (typeof apiError.errors === 'string') {

@@ -12,7 +12,7 @@ import {
   RequestContext,
   sendMail
 } from './src/utils/index.js';
-import { errorHandler, verifyUserId, verifyScope, verifyRole } from './src/middlewares/index.js';
+import { errorHandler, verifyUserId, verifyScope, verifyRole, userContext, verifyToken } from './src/middlewares/index.js';
 import { Service } from './src/templates/index.js';
 import { exec, trxRunner } from './src/db/index.js';
 
@@ -35,5 +35,7 @@ export {
   verifyUserId,
   verifyScope,
   verifyRole,
-  trxRunner
+  trxRunner,
+  userContext,
+  verifyToken
 };
